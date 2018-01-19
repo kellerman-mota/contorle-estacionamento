@@ -9,11 +9,14 @@ import { ClienteService } from './clientes/cliente.service';
 import { AppRoutingModule } from './app-routing.module';
 import { VeiculosComponent } from './veiculos/veiculos.component';
 import { VeiculoService } from './veiculos/veiculo.service';
+import { PatiosComponent } from './patios/patios.component';
+import { PatioService } from './patios/patio.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    ClientesComponent, VeiculosComponent,
+    ClientesComponent, VeiculosComponent, PatiosComponent, HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { VeiculoService } from './veiculos/veiculo.service';
     HttpModule,
     AppRoutingModule,    
   ],
-  providers: [ClienteService, VeiculoService],
+  providers: [ClienteService, VeiculoService, PatioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
