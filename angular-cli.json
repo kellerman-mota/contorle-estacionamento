@@ -18,7 +18,8 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/bootstrap-3.3.7-dist/css/bootstrap.css"
       ],
       "scripts": [],
       "environments": {
