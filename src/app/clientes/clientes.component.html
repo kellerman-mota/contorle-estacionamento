@@ -1,0 +1,66 @@
+<h3>Clientes</h3>
+<button (click)="prepararIncluir()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Novo</button>
+<hr />
+<div class="alert alert-danger" role="alert" *ngIf="messageError">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>  
+  {{messageError}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="messageSuccess">
+  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>  
+  {{messageSuccess}}
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<ul class="list-group" *ngIf="clientes?.length > 0">
+			<li class="list-group-item"
+				[class.active]="clienteSelected === cliente"
+				*ngFor="let cliente of clientes" (click)="onSelect(cliente)"><span
+				class="badge">{{cliente.id}}</span> {{cliente.nome}}</li>
+		</ul>
+		<ul class="list-group" *ngIf="clientes?.length == 0"> 
+			<li class="list-group-item">Nenhum Cliente cadastrado</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div *ngIf="clienteSelected">
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Id: </strong>
+				</div>
+				<div class="col-xs-10">{{clienteSelected.id}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Nome: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="clienteSelected.nome" placeholder="nome" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>CPF: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="clienteSelected.cpf" placeholder="cpf" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Telefone: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="clienteSelected.telefone"
+						placeholder="telefone" />
+				</div>
+			</div>
+			<div class="row">
+				<p></p>
+				<p>
+					<button (click)="salvar()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Salvar</button>
+					<button (click)="excluir()" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>  Excluir</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

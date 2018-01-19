@@ -1,0 +1,76 @@
+<h3>Veículos</h3>
+<button (click)="prepararIncluir()" class="btn btn-primary"
+	role="button">
+	<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+	Novo
+</button>
+<hr />
+<div class="alert alert-danger" role="alert" *ngIf="messageError">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	{{messageError}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="messageSuccess">
+	<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+	{{messageSuccess}}
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<ul class="list-group" *ngIf="veiculos?.length > 0">
+			<li class="list-group-item"
+				[class.active]="veiculoSelected === veiculo"
+				*ngFor="let veiculo of veiculos" (click)="onSelect(veiculo)"><span
+				class="badge">{{veiculo.id}}</span> {{veiculo.placa}} - {{veiculo.modelo}} - {{veiculo.cor}}</li>
+		</ul>
+		<ul class="list-group" *ngIf="veiculos?.length == 0">
+			<li class="list-group-item">Nenhum Veiculo cadastrado</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div *ngIf="veiculoSelected">
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Id: </strong>
+				</div>
+				<div class="col-xs-10">{{veiculoSelected.id}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Placa: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="veiculoSelected.placa" placeholder="placa" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Modelo: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="veiculoSelected.modelo" placeholder="modelo" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Cor: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="veiculoSelected.cor"
+						placeholder="cor" />
+				</div>
+			</div>
+			<div class="row">
+				<p></p>
+				<p>
+					<button (click)="salvar()" class="btn btn-primary" role="button">
+						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+						Salvar
+					</button>
+					<button (click)="excluir()" class="btn btn-danger" role="button">
+						<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+						Excluir
+					</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
