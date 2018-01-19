@@ -1,0 +1,66 @@
+<h3>Patios</h3>
+<button (click)="prepararIncluir()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Novo</button>
+<hr />
+<div class="alert alert-danger" role="alert" *ngIf="messageError">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>  
+  {{messageError}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="messageSuccess">
+  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>  
+  {{messageSuccess}}
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<ul class="list-group" *ngIf="patios?.length > 0">
+			<li class="list-group-item"
+				[class.active]="patioSelected === patio"
+				*ngFor="let patio of patios" (click)="onSelect(patio)"><span
+				class="badge">{{patio.id}}</span> {{patio.descricao}}</li>
+		</ul>
+		<ul class="list-group" *ngIf="patios?.length == 0"> 
+			<li class="list-group-item">Nenhum Patio cadastrado</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div *ngIf="patioSelected">
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Id: </strong>
+				</div>
+				<div class="col-xs-10">{{patioSelected.id}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Descrição: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="patioSelected.descricao" placeholder="Descrição" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Total de Vagas: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="patioSelected.quantidadeTotalVagas" placeholder="Quantidade total de vagas" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<strong>Taxa/hora: </strong>
+				</div>
+				<div class="col-xs-10">
+					<input [(ngModel)]="patioSelected.valorTaxaHora"
+						placeholder="Taxa/Hora" />
+				</div>
+			</div>
+			<div class="row">
+				<p></p>
+				<p>
+					<button (click)="salvar()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Salvar</button>
+					<button (click)="excluir()" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>  Excluir</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
