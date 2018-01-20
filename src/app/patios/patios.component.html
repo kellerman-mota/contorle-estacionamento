@@ -15,7 +15,7 @@
 			<li class="list-group-item"
 				[class.active]="patioSelected === patio"
 				*ngFor="let patio of patios" (click)="onSelect(patio)">
-				<strong>{{patio.id}}</strong> | {{patio.descricao}}</li>
+				<span class="label label-default">{{patio.id}}</span> {{patio.descricao}}</li>
 		</ul>
 		<ul class="list-group" *ngIf="patios?.length == 0"> 
 			<li class="list-group-item">Nenhum Patio cadastrado</li>

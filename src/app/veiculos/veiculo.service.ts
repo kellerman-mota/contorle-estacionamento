@@ -13,7 +13,15 @@ export class VeiculoService {
   private http: Http) { }
     
   private veiculosUrl= 'http://localhost:8080/veiculos'  
+  private veiculosUrlCount= 'http://localhost:8080/veiculos/count'  
   private headers = new Headers({'Content-Type': 'application/json'});
+    
+  count(): Promise<number> {          
+       return this.http.get(this.veiculosUrlCount)
+               .toPromise()
+               .then(response => response.json() as number)                    
+               .catch(this.handleError);
+   }
 
   listar(): Promise<Veiculo[]> {          
        return this.http.get(this.veiculosUrl)

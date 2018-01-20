@@ -12,7 +12,15 @@ export class ClienteService {
   private http: Http) { }
     
   private clientesUrl= 'http://localhost:8080/clientes'  
+  private clientesUrlCount= 'http://localhost:8080/clientes/count'  
   private headers = new Headers({'Content-Type': 'application/json'});
+    
+  count(): Promise<number> {          
+       return this.http.get(this.clientesUrlCount)
+               .toPromise()
+               .then(response => response.json() as number)                    
+               .catch(this.handleError);
+  }
 
   listar(): Promise<Cliente[]> {          
        return this.http.get(this.clientesUrl)

@@ -14,7 +14,8 @@
 		<ul class="list-group" *ngIf="clientes?.length > 0">
 			<li class="list-group-item"
 				[class.active]="clienteSelected === cliente"
-				*ngFor="let cliente of clientes" (click)="onSelect(cliente)"><strong>{{cliente.id}}</strong> | {{cliente.nome}}</li>
+				*ngFor="let cliente of clientes" (click)="onSelect(cliente)">
+				<span class="label label-default">{{cliente.id}}</span> {{cliente.nome}}</li>
 		</ul>
 		<ul class="list-group" *ngIf="clientes?.length == 0"> 
 			<li class="list-group-item">Nenhum Cliente cadastrado</li>

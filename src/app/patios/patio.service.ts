@@ -11,8 +11,24 @@ export class PatioService {
 
     constructor(private http: Http) { }
 
-    private patiosUrl = 'http://localhost:8080/patios'
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+   private patiosUrl = 'http://localhost:8080/patios';
+   private patiosUrlCountVagas = 'http://localhost:8080/patios/count/vagas';
+   private patiosUrlCount = 'http://localhost:8080/patios/count';
+   private headers = new Headers({ 'Content-Type': 'application/json' });
+    
+   count(): Promise<number> {          
+       return this.http.get(this.patiosUrlCount)
+               .toPromise()
+               .then(response => response.json() as number)                    
+               .catch(this.handleError);
+   }
+   
+   countVagas(): Promise<number> {          
+       return this.http.get(this.patiosUrlCountVagas)
+               .toPromise()
+               .then(response => response.json() as number)                    
+               .catch(this.handleError);
+   }
 
     listar(): Promise<Patio[]> {
         return this.http.get(this.patiosUrl)

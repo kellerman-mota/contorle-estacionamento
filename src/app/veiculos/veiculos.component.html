@@ -18,7 +18,8 @@
 		<ul class="list-group" *ngIf="veiculos?.length > 0">
 			<li class="list-group-item"
 				[class.active]="veiculoSelected === veiculo"
-				*ngFor="let veiculo of veiculos" (click)="onSelect(veiculo)"><strong>{{veiculo.id}}</strong> | {{veiculo.placa | uppercase}} - {{veiculo.modelo}} - {{veiculo.cor}}</li>
+				*ngFor="let veiculo of veiculos" (click)="onSelect(veiculo)">
+				<span class="label label-default">{{veiculo.id}}</span> {{veiculo.placa | uppercase}} - {{veiculo.modelo}} - {{veiculo.cor}}</li>
 		</ul>
 		<ul class="list-group" *ngIf="veiculos?.length == 0">
 			<li class="list-group-item">Nenhum Veiculo cadastrado</li>

@@ -1,5 +1,28 @@
 <div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+	<h2>Bem vindo ao controle de estacionamento ITSS</h2>
+
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<ul class="list-group">
+				<li class="list-group-item">Clientes <span class="badge">{{countClientes}}</span></li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Veiculos <span class="badge">{{countVeiculos}}</span></li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Patios <span class="badge">{{countPatio}}</span></li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<ul class="list-group">
+				<li class="list-group-item" style="color: red">Vagas ocupadas <span class="badge">{{countVagasOcupadas}}</span></li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item" style="color: green">Vagas livres <span class="badge">{{countVagasLivres}}</span></li>
+			</ul>			
+			<ul class="list-group">
+				<li class="list-group-item">Vagas <span class="badge">{{countPatioVagas}}</span></li>
+			</ul>			
+		</div>
+	</div>
 </div>

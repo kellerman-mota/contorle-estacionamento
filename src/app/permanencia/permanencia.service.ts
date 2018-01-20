@@ -11,10 +11,26 @@ export class PermanenciaService {
     constructor(private http: Http) { }
 
     private permanenciaUrl = 'http://localhost:8080/permanencias'
+    private permanenciaUrlCountOcupadas = 'http://localhost:8080/permanencias/count/ocupadas'
+    private permanenciaUrlCountLivres = 'http://localhost:8080/permanencias/count/livres'
     private permanenciaUrlRegistrarSaida = 'http://localhost:8080/permanencias/sair'
     private permanenciaUrlAtivos = 'http://localhost:8080/permanencias/ativos'
     private permanenciaUrlConcluidos = 'http://localhost:8080/permanencias/concluidos'
     private headers = new Headers({ 'Content-Type': 'application/json' });
+    
+    getCountOcupadas(): Promise<number> {
+        return this.http.get(this.permanenciaUrlCountOcupadas)
+            .toPromise()
+            .then(response => response.json() as number)
+            .catch(this.handleError);
+    }
+    
+    getCountLivres(): Promise<number> {
+        return this.http.get(this.permanenciaUrlCountLivres)
+            .toPromise()
+            .then(response => response.json() as number)
+            .catch(this.handleError);
+    }
 
     listarAtivos(): Promise<Permanencia[]> {
         return this.http.get(this.permanenciaUrlAtivos)

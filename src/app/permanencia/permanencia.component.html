@@ -24,8 +24,9 @@
 			<li class="list-group-item"
 				[class.active]="permanenciaSelected === permanencia"
 				*ngFor="let permanencia of permanencias"
-				(click)="onSelect(permanencia)"><strong>{{permanencia.id}}</strong>
-				| {{permanencia.cliente.nome}} | {{permanencia.veiculo.modelo}} |
+				(click)="onSelect(permanencia)">
+				<span class="label label-default">{{permanencia.id}}</span>
+				{{permanencia.cliente.nome}} | {{permanencia.veiculo.modelo}} |
 				{{permanencia.patio.descricao}}</li>
 		</ul>
 		<ul class="list-group" *ngIf="permanencias?.length == 0">
