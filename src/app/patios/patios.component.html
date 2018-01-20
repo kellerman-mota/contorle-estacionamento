@@ -14,8 +14,8 @@
 		<ul class="list-group" *ngIf="patios?.length > 0">
 			<li class="list-group-item"
 				[class.active]="patioSelected === patio"
-				*ngFor="let patio of patios" (click)="onSelect(patio)"><span
-				class="badge">{{patio.id}}</span> {{patio.descricao}}</li>
+				*ngFor="let patio of patios" (click)="onSelect(patio)">
+				<strong>{{patio.id}}</strong> | {{patio.descricao}}</li>
 		</ul>
 		<ul class="list-group" *ngIf="patios?.length == 0"> 
 			<li class="list-group-item">Nenhum Patio cadastrado</li>

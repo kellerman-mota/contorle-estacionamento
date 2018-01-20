@@ -5,7 +5,7 @@ import { Veiculo } from './veiculo'
 @Component({
   selector: 'app-veiculos',
   templateUrl: './veiculos.component.html',
-  styleUrls: ['./veiculos.component.css']
+  styleUrls: ['./veiculos.component.css'],  
 })
 export class VeiculosComponent implements OnInit {
 

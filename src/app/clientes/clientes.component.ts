@@ -34,6 +34,7 @@ export class ClientesComponent implements OnInit {
           this.listar();
           this.clienteSelected = new Cliente();
           this.messageSuccess = "Cliente Salvo Com sucesso!";
+           //this.msgs.push({severity:'success', summary:'Cliente Salvo Com sucesso!'});
       })
   }  
     

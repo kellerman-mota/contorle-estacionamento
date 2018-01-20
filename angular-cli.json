@@ -19,7 +19,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "assets/bootstrap-3.3.7-dist/css/bootstrap.css"
+        "assets/bootstrap-3.3.7-dist/css/bootstrap.min.css"        
       ],
       "scripts": [],
       "environments": {
