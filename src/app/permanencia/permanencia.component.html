@@ -1,0 +1,100 @@
+<h3>Permanências</h3>
+<button (click)="prepararIncluir()" class="btn btn-primary"
+	role="button">
+	<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+	Novo
+</button>
+<select [(ngModel)]="filtroSelecionado"
+	(change)="onSelectFiltro($event.target.value)">
+	<option *ngFor="let filtro of filtros" value={{filtro}}>
+		{{filtro}}</option>
+</select>
+<hr />
+<div class="alert alert-danger" role="alert" *ngIf="messageError">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	{{messageError}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="messageSuccess">
+	<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+	{{messageSuccess}}
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<ul class="list-group" *ngIf="permanencias?.length > 0">
+			<li class="list-group-item"
+				[class.active]="permanenciaSelected === permanencia"
+				*ngFor="let permanencia of permanencias"
+				(click)="onSelect(permanencia)"><strong>{{permanencia.id}}</strong>
+				| {{permanencia.cliente.nome}} | {{permanencia.veiculo.modelo}} |
+				{{permanencia.patio.descricao}}</li>
+		</ul>
+		<ul class="list-group" *ngIf="permanencias?.length == 0">
+			<li class="list-group-item">Nenhuma Permanencia cadastrada</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div *ngIf="permanenciaSelected">
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Id: </strong><br />
+					<div class="col-xs-8">{{permanenciaSelected.id}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Cliente: </strong><br /> <select 
+						[disabled]="!isPermanenciaAtiva(permanenciaSelected)"
+						[(ngModel)]="permanenciaSelected.cliente.id"
+						(change)="onSelectCliente($event.target.value)">
+						<option *ngFor="let cliente of clientes" value={{cliente.id}}>
+							{{cliente.nome}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Veiculo: </strong><br /> <select
+						[disabled]="!isPermanenciaAtiva(permanenciaSelected)"
+						[(ngModel)]="permanenciaSelected.veiculo.id"
+						(change)="onSelectVeiculo($event.target.value)">
+						<option *ngFor="let veiculo of veiculos" value={{veiculo.id}}>
+							{{veiculo.placa}} | {{veiculo.modelo}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Patio: </strong><br /> <select
+						[disabled]="!isPermanenciaAtiva(permanenciaSelected)"
+						[(ngModel)]="permanenciaSelected.patio.id"
+						(change)="onSelectPatio($event.target.value)">
+						<option *ngFor="let patio of patios" value={{patio.id}}>
+							{{patio.descricao}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Periodo Permanencia: </strong>
+					{{getPeriodoPermanenciaEmHoras(permanenciaSelected)}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<strong>Total a Pagar: </strong>
+					{{getTotalAPagar(permanenciaSelected)}}
+				</div>
+			</div>
+			<div class="row" *ngIf="isPermanenciaAtiva(permanenciaSelected)">
+				<p></p>
+				<p>
+					<button (click)="salvar()" class="btn btn-primary" role="button">
+						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+						Salvar
+					</button>
+					<button *ngIf="permanenciaSelected.id != null" (click)="registrarSaida()" class="btn btn-danger" role="button">Registrar Saída</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

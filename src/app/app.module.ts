@@ -12,11 +12,13 @@ import { VeiculoService } from './veiculos/veiculo.service';
 import { PatiosComponent } from './patios/patios.component';
 import { PatioService } from './patios/patio.service';
 import { HomeComponent } from './home/home.component';
+import { PermanenciaComponent } from './permanencia/permanencia.component';
+import { PermanenciaService } from './permanencia/permanencia.service';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    ClientesComponent, VeiculosComponent, PatiosComponent, HomeComponent
+    ClientesComponent, VeiculosComponent, PatiosComponent, HomeComponent, PermanenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     AppRoutingModule,    
   ],
-  providers: [ClienteService, VeiculoService, PatioService],
+  providers: [ClienteService, VeiculoService, PatioService, PermanenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
